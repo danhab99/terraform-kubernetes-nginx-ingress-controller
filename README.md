@@ -1,6 +1,6 @@
 # terraform-kubernetes-nginx-ingress-controller
 
-This fork improve https://github.com/byuoitav/terraform-kubernetes-nginx-ingress-controller by adding greater control to nginx ingress controller, enabling allowing extra TCP and UDP services to be added to Load balancer port.
+This fork improve https://github.com/sanarena/terraform-kubernetes-nginx-ingress-controller by adding greater control to nginx ingress controller, enabling allowing extra TCP and UDP services to be added to Load balancer port.
 
 In AWS, this will trigger kubernetes ingress to create target groups required to not only provide ingress for port 80 and 443, also allow additional ports.
 
@@ -8,8 +8,10 @@ In AWS, this will trigger kubernetes ingress to create target groups required to
 
 ```
 module nginx-ingress-controller {
-  source  = "github.com/sanarena/terraform-kubernetes-nginx-ingress-controller"
+  source  = "github.com/danhab99/terraform-kubernetes-nginx-ingress-controller"
   # however recommended way is to add this repository as a submodule
+
+  namespace = ""
 
   # optional
   nginx_ingress_controller_version = "0.33.0"
