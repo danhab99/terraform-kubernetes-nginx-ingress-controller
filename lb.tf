@@ -2,11 +2,11 @@
 resource "kubernetes_service" "lb" {
   metadata {
     name      = var.name
-    namespace = kubernetes_namespace.nginx.metadata.0.name
+    namespace = var.namespace
 
     labels = {
       "app.kubernetes.io/name"       = var.name
-      "app.kubernetes.io/part-of"    = kubernetes_namespace.nginx.metadata.0.name
+      "app.kubernetes.io/part-of"    = var.namespace
       "app.kubernetes.io/managed-by" = "terraform"
     }
 
@@ -17,7 +17,7 @@ resource "kubernetes_service" "lb" {
     type = "LoadBalancer"
     selector = {
       "app.kubernetes.io/name"    = var.name
-      "app.kubernetes.io/part-of" = kubernetes_namespace.nginx.metadata.0.name
+      "app.kubernetes.io/part-of" = var.namespace
     }
 
     external_traffic_policy = "Local"
